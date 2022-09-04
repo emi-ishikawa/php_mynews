@@ -11,13 +11,27 @@
 |
 */
 
+// URL: ~~~/
 Route::get('/', function () {
     return view('welcome');
 });
 
+// URL: ~~~/admin/ de hajimaru
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('profile/create', 'Admin\create@add');
+    // URL: ===/news/create => ~~~/admin/news/create
+    Route::get('news/create', 'Admin\NewsController@add')->middleware('auth');
+    Route::post('news/create', 'Admin\NewsController@create'); # 追記
+
 });
+
+
+
+// URL: ~~~/login
+Auth::routes();
+
+// URL: ~~~/home
+Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::get('xxx','AAAController@bbb');
 
@@ -26,4 +40,3 @@ Route::get('admin/profile/create','Admin\ProfileController@add');
 Route::get('admin/profile/edit','Admin\ProfileController@edit');
 
 Route::get('admin/news/create','Admin\NewsController@add');
-

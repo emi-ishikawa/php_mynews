@@ -10,7 +10,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         
         {{-- 各ページごとにtitleタグを入れるために@yieldで空けておきます。 --}}
-        <title>@yield('title')</title>
+        <title>@yield('Laravel')</title>
         
         <!-- Scripts -->
         {{-- Laravel標準で用意されているJavascriptを読み込みます --}}
@@ -55,7 +55,7 @@
             
             <main class="py-4">
                 {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
-                @yield('content')
+                @yield('Myプロフィール')
             </main>
         </div>
     </body>
