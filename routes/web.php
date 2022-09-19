@@ -19,11 +19,13 @@ Route::get('/', function () {
 // URL: ~~~/admin/ de hajimaru
 Route::group(['prefix' => 'admin'], function() {
     // URL: ===/news/create => ~~~/admin/news/create
-    Route::get('news/create', 'Admin\NewsController@add')->middleware('auth');
-    Route::post('news/create', 'Admin\NewsController@create'); # 追記
-
+    Route::get('profile/create', 'Admin\ProfileController@add')->middleware('auth');
 });
 
+Route::group(['prefix' => 'admin'], function() {
+    // URL: ===/news/create => ~~~/admin/news/create
+    Route::get('profile/edit', 'Admin\ProfileController@add')->middleware('auth');
+});
 
 
 // URL: ~~~/login
