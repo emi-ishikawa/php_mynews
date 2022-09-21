@@ -17,9 +17,11 @@ Route::get('/', function () {
 });
 
 // URL: ~~~/admin/ de hajimaru
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin','middleware' =>'auth'], function() {
     // URL: ===/news/create => ~~~/admin/news/create
-    Route::get('profile/create', 'Admin\ProfileController@add')->middleware('auth');
+    Route::get('profile/edit', 'Admin\ProfileController@add');
+    Route::post('profile/edit', 'Admin\ProfileController@update');
+    
 });
 
 Route::group(['prefix' => 'admin'], function() {
