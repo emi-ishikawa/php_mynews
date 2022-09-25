@@ -17,11 +17,9 @@ Route::get('/', function () {
 });
 
 // URL: ~~~/admin/ de hajimaru
-Route::group(['prefix' => 'admin','middleware' =>'auth'], function() {
+Route::group(['prefix' => 'admin'], function() {
     // URL: ===/news/create => ~~~/admin/news/create
-    Route::get('profile/edit', 'Admin\ProfileController@add');
-    Route::post('profile/edit', 'Admin\ProfileController@update');
-    
+    Route::get('profile/create', 'Admin\ProfileController@add')->middleware('auth');
 });
 
 Route::group(['prefix' => 'admin'], function() {
@@ -39,8 +37,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('xxx','AAAController@bbb');
 
-Route::get('admin/profile/create','Admin\ProfileController@add');
 
-Route::get('admin/profile/edit','Admin\ProfileController@edit');
 
 Route::get('admin/news/create','Admin\NewsController@add');
