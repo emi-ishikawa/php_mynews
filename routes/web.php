@@ -16,11 +16,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// URL: ~~~/admin/ de hajimaru
 Route::group(['prefix' => 'admin','middleware' =>'auth'], function() {
-    // URL: ===/news/create => ~~~/admin/news/create
     Route::get('profile/create', 'Admin\ProfileController@add');
-    Route::post('profile/create', 'Admin\ProfileController@create');
     
 });
 
@@ -38,8 +35,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
-Route::get('admin/profile/create','Admin\ProfileController@create');
 
-Route::get('admin/profile/edit','Admin\ProfileController@edit');
 
-Route::get('admin/news/create','Admin\NewsController@add');
